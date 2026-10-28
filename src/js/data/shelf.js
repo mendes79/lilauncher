@@ -1,6 +1,8 @@
-/* shelf.js — fileira fixa do launcher (ordem e capas hero definidas por Luís).
- * id = id real do app na TV (usado no launch). hero = imagem em src/img/logos/.
- * Itens com "(validar)" têm id a confirmar no on-device. */
+/* shelf.js — fileira fixa do launcher (ordem e capas definidas por Luís).
+ * Dois tipos de item:
+ *   App:          { id: '<id real na TV>', name: '...', hero: 'img/logos/arquivo.jpg' }
+ *   Atalho de web:{ url: 'https://...',    name: '...', hero: 'img/logos/arquivo.jpg' }
+ * O atalho de web abre a pagina no navegador da TV em vez de abrir um app. */
 window.SHELF = [
   { id: 'gz3rVzUIC7.IBOPlayer',        name: 'IBOPlayer',       hero: 'img/logos/iboplayer.jpg' },
   { id: 'org.tizen.netflix-app',       name: 'Netflix',         hero: 'img/logos/netflix.jpg' },
@@ -17,6 +19,8 @@ window.SHELF = [
   { id: 'PHq4K3rTG8.ALCHRETAIL',       name: 'Star+',           hero: 'img/logos/starplus.jpg' },
   { id: 'rJeHak5zRg.Spotify',          name: 'Spotify',         hero: 'img/logos/spotify.jpg' },
   { id: 'org.tizen.browser',           name: 'Navegador',       hero: 'img/logos/navegador.jpg' }
+  // Para um atalho de web, acrescente uma virgula na linha acima e inclua, por exemplo:
+  // { url: 'https://www.youtube.com', name: 'YouTube Web', hero: 'img/logos/youtubeweb.jpg' }
 ];
 window.SPECIALS = {
   entradas: { name: 'Entradas',        hero: 'img/logos/entradas.jpg' },

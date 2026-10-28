@@ -161,7 +161,13 @@
   }
   function activate() {
     var it = items[focus];
-    if (it.type === 'app') launchChain([it.app.id].concat(it.app.alt || []), it.app.name, it.app.ops, it.app.rest);
+    if (it.type !== 'app') return;
+    if (it.app.url) {
+      // Atalho de web: abre a pagina no navegador da TV.
+      TV.openUrl(it.app.url, function () {}, function () { toast('Não foi possível abrir ' + it.app.name); });
+    } else {
+      launchChain([it.app.id].concat(it.app.alt || []), it.app.name, it.app.ops, it.app.rest);
+    }
   }
 
   /* ---------- ícones do topo (Todos os apps / Configurações) ---------- */

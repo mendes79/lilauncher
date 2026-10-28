@@ -16,6 +16,20 @@
 
   TV.launch = function (id, ok, err) { try { tizen.application.launch(id, ok, err); } catch (e) { err && err(e); } };
 
+  // Abre uma pagina no navegador da TV (operacao "view" do app-control).
+  // Tenta o navegador explicito e, se falhar, deixa o sistema escolher.
+  TV.openUrl = function (url, ok, err) {
+    if (window.IS_SIMULATOR) { ok && ok(); return; }
+    var VIEW = 'http://tizen.org/appcontrol/operation/view';
+    function tryOpen(appId, next) {
+      try {
+        var ac = new tizen.ApplicationControl(VIEW, url, null, null, []);
+        tizen.application.launchAppControl(ac, appId, function () { ok && ok(); }, next);
+      } catch (e) { next(e); }
+    }
+    tryOpen('org.tizen.browser', function () { tryOpen(null, function (e) { err && err(e); }); });
+  };
+
   // Abre um app via app-control com uma operação específica e appId explícito.
   // É o mecanismo oficial p/ apps de serviço/ocultos (ex.: Samsung TV Plus
   // "Deeplinker") que recusam o launch() direto. No simulador, só confirma.
