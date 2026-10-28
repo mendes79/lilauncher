@@ -40,10 +40,21 @@
 
   /* ---------- relógio / clima ---------- */
   function two(n) { return (n < 10 ? '0' : '') + n; }
+  // Relógio travado no fuso do Brasil e em 24h, independentemente do ajuste da TV.
+  // Se a TV não tiver a base de fusos, cai no horário local do sistema.
+  var TZ = 'America/Sao_Paulo';
+  function fmtTime(d) {
+    try { return d.toLocaleTimeString('pt-BR', { timeZone: TZ, hour12: false, hour: '2-digit', minute: '2-digit' }); }
+    catch (e) { return two(d.getHours()) + ':' + two(d.getMinutes()); }
+  }
+  function fmtDate(d, weekday, month) {
+    try { return d.toLocaleDateString('pt-BR', { timeZone: TZ, weekday: weekday, day: 'numeric', month: month }); }
+    catch (e) { return d.toLocaleDateString('pt-BR', { weekday: weekday, day: 'numeric', month: month }); }
+  }
   function tick() {
-    var d = new Date(), t = two(d.getHours()) + ':' + two(d.getMinutes());
-    $('#time').textContent = t; $('#date').textContent = d.toLocaleDateString('pt-BR', { weekday: 'short', day: 'numeric', month: 'short' });
-    $('#s-time').textContent = t; $('#s-date').textContent = d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+    var d = new Date(), t = fmtTime(d);
+    $('#time').textContent = t; $('#date').textContent = fmtDate(d, 'short', 'short');
+    $('#s-time').textContent = t; $('#s-date').textContent = fmtDate(d, 'long', 'long');
   }
   // Ícones de clima em traço (SVG), estilo linha. currentColor = cor do texto.
   function wxIcon(code) {
@@ -266,7 +277,12 @@
   var toastT; function toast(m) { var e = $('#toast'); e.textContent = m; e.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { e.classList.remove('show'); }, 1700); }
 
   /* ---------- tema (modo escuro / claro / automático) ---------- */
-  function isDayTime() { var h = new Date().getHours(); return h >= 6 && h < 18; }
+  function isDayTime() {
+    var h;
+    try { h = parseInt(new Date().toLocaleTimeString('en-GB', { timeZone: TZ, hour12: false, hour: '2-digit', minute: '2-digit' }).slice(0, 2), 10); }
+    catch (e) { h = new Date().getHours(); }
+    return h >= 6 && h < 18;
+  }
   function applyTheme(mode) {
     var light = mode === 'light' || (mode === 'auto' && isDayTime());
     if (light) document.documentElement.setAttribute('data-theme', 'light');

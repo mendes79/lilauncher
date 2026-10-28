@@ -18,6 +18,7 @@ window.SHELF = [
   { id: 'MCmYXNxgcu.DisneyPlus',       name: 'Disney+',         hero: 'img/logos/disney.jpg' },
   { id: 'PHq4K3rTG8.ALCHRETAIL',       name: 'Star+',           hero: 'img/logos/starplus.jpg' },
   { id: 'rJeHak5zRg.Spotify',          name: 'Spotify',         hero: 'img/logos/spotify.jpg' },
+  { id: 'xvvl3S1bvH.TizenBrewStandalone', name: 'TizenBrew',    hero: 'img/logos/tizenbrew.jpg' },
   { id: 'org.tizen.browser',           name: 'Navegador',       hero: 'img/logos/navegador.jpg' }
   // Para um atalho de web, acrescente uma virgula na linha acima e inclua, por exemplo:
   // { url: 'https://www.youtube.com', name: 'YouTube Web', hero: 'img/logos/youtubeweb.jpg' }
