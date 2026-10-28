@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1">
+<title>Launcher</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <img id="wall" class="wall" alt="">
+  <div id="scrim"></div>
+
+  <header id="top">
+    <div class="clock">
+      <div id="time">--:--</div>
+      <div id="date">—</div>
+    </div>
+    <div class="info">
+      <button class="iconbtn" id="btn-apps" title="Todos os apps" aria-label="Todos os apps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </button>
+      <button class="iconbtn" id="btn-config" title="Configurações" aria-label="Configurações">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+      <div class="wx">
+        <div id="weather"><span class="wx-ico">·</span><span id="wx-temp">—</span><span id="wx-city"></span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="shelf-wrap">
+    <div id="shelf"></div>
+  </section>
+
+  <footer id="hint">
+    <span><b>◀ ▶</b> navegar</span>
+    <span><b>OK</b> abrir</span>
+    <span><b>azul</b> tema</span>
+    <span><b>verde</b> papel de parede</span>
+    <span><b>voltar</b> sair</span>
+    <span id="mode"></span>
+  </footer>
+
+  <!-- Overlay: todos os apps -->
+  <div id="allapps" class="overlay hidden">
+    <div class="ov-head"><h2><span id="ov-title">Todos os aplicativos</span> <span id="count"></span></h2>
+      <div class="ov-hint"><b>voltar</b> fecha</div></div>
+    <div class="grid" id="grid-all"></div>
+  </div>
+
+  <!-- Menu de configurações do launcher -->
+  <div id="settings" class="overlay hidden">
+    <div class="ov-head"><h2>Configurações</h2><div class="ov-hint"><b>◀ ▶</b> alterar · <b>voltar</b> fecha</div></div>
+    <div class="set-list" id="set-list"></div>
+  </div>
+
+  <!-- Seletor visual de papel de parede -->
+  <div id="wallpicker" class="wp hidden">
+    <div class="wp-scrim"></div>
+    <div class="wp-hint"><b>◀ ▶</b> escolher · <b>OK</b> aplicar · <b>voltar</b> cancelar</div>
+    <div class="wp-strip" id="wp-strip"></div>
+  </div>
+
+  <!-- Busca de cidade para o clima (geocodificação Open-Meteo) -->
+  <div id="citysearch" class="overlay hidden">
+    <div class="ov-head"><h2>Cidade do clima</h2>
+      <div class="ov-hint"><b>OK</b> busca · <b>▼</b> resultados · <b>voltar</b> fecha</div></div>
+    <div class="city-box">
+      <input id="city-input" type="text" placeholder="Digite a cidade e tecle OK…" autocomplete="off" autocorrect="off" autocapitalize="words" spellcheck="false">
+      <div id="city-status" class="city-status"></div>
+      <div id="city-results" class="city-results"></div>
+    </div>
+  </div>
+
+  <!-- Protetor de tela (rotação de papéis de parede com transição) -->
+  <div id="saver" class="hidden">
+    <img class="saver-bg" id="sbg-a" alt="">
+    <img class="saver-bg" id="sbg-b" alt="">
+    <div class="saver-dim"></div>
+    <div class="saver-clock">
+      <div id="s-time">--:--</div>
+      <div id="s-date">—</div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+
+<script src="js/data/apps.sample.js"></script>
+<script src="js/data/walls.js"></script>
+<script src="js/data/shelf.js"></script>
+<script src="js/tizen-shim.js"></script>
+<script src="js/tv.js"></script>
+<script src="js/remote.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

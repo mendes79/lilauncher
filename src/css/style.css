@@ -1,0 +1,170 @@
+/* Launcher v0.2 — minimalista, papel de parede, fileira única. Desenhado em 1920×1080. */
+:root{
+  --txt:#f4f7fb; --sub:rgba(255,255,255,.72); --faint:rgba(255,255,255,.45);
+  --glass:rgba(22,26,34,.42); --glass-brd:rgba(255,255,255,.14);
+  --focus:rgba(255,255,255,.96); --accent:#8ab4ff;
+  --tile:150px; --gap:22px; --radius:20px;
+}
+:root[data-theme="light"]{
+  --txt:#10151c; --sub:rgba(20,25,33,.72); --faint:rgba(20,25,33,.5);
+  --glass:rgba(255,255,255,.52); --glass-brd:rgba(255,255,255,.7);
+  --focus:#10151c; --accent:#2f6bff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#05070a;
+  font-family:"Inter","SamsungOne","Segoe UI",Arial,sans-serif;color:var(--txt);
+  -webkit-font-smoothing:antialiased}
+
+#stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left;overflow:hidden}
+
+/* Papel de parede (img para compatibilidade com a TV) + véu para legibilidade */
+.wall{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
+#scrim{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.12) 30%,rgba(0,0,0,.20) 62%,rgba(0,0,0,.66) 100%)}
+:root[data-theme="light"] #scrim{
+  background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,.12) 30%,rgba(255,255,255,.22) 62%,rgba(255,255,255,.72))}
+
+/* Cabeçalho */
+#top{position:absolute;top:60px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:flex-start}
+.clock #time{font-size:92px;font-weight:700;line-height:.92;letter-spacing:-2px;
+  font-variant-numeric:tabular-nums;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.clock #date{font-size:24px;color:var(--sub);margin-top:10px;text-transform:capitalize;font-weight:500}
+.info{display:flex;align-items:center;gap:18px;padding-top:6px}
+.iconbtn{background:none;border:0;padding:8px;margin:0;cursor:pointer;color:var(--sub);
+  opacity:.72;display:flex;align-items:center;justify-content:center;overflow:visible;border-radius:14px;
+  transition:opacity .15s,transform .15s,color .15s}
+.iconbtn svg{width:37px;height:37px;display:block;overflow:visible}
+/* foco com maior destaque: chip de fundo + escala maior (aplicado instantâneo) */
+.iconbtn.focus{opacity:1;color:var(--txt);transform:scale(1.22);background:rgba(138,180,255,.22)}
+:root[data-theme="light"] .iconbtn.focus{background:rgba(47,107,255,.16)}
+.wx{text-align:right;margin-left:10px}
+#weather{display:flex;align-items:center;gap:12px;justify-content:flex-end;font-size:32px;font-weight:600}
+#weather .wx-ico{display:flex;align-items:center}
+#weather .wx-ico svg{width:44px;height:44px;display:block}
+#wx-temp{font-variant-numeric:tabular-nums}
+#wx-city{font-size:22px;color:var(--sub);font-weight:500;margin-left:4px}
+.status{margin-top:10px;color:var(--faint);font-size:15px;letter-spacing:.4px}
+
+/* Fileira única (capas hero 16:9) */
+#shelf-wrap{position:absolute;left:0;right:0;bottom:130px}
+#shelf{display:flex;gap:24px;padding:0 72px;align-items:flex-start;
+  will-change:transform;transition:transform .22s cubic-bezier(.22,.61,.36,1)}
+.slot{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:12px}
+/* GPU: anima só transform (box-shadow/border aplicam instantâneo, sem repaint
+   animado — regra de performance medida em TV Tizen). */
+.card{width:288px;height:162px;border-radius:16px;position:relative;overflow:hidden;
+  background:var(--glass);border:1px solid var(--glass-brd);
+  transform:translateZ(0);will-change:transform;backface-visibility:hidden;
+  transition:transform .16s ease}
+.card .hero{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:16px}
+.card .logo{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:800}
+.cap{font-size:17px;color:var(--sub);max-width:288px;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+/* título do app (só na fileira): preparado para o chip de ênfase no foco */
+.slot .cap{display:inline-block;padding:3px 14px;border-radius:11px;
+  transform:translateZ(0);will-change:transform;transition:transform .16s ease}
+
+.slot.focus .card{transform:translateY(-10px) scale(1.05);border-color:transparent;
+  box-shadow:0 0 0 4px var(--accent),0 22px 50px rgba(0,0,0,.55)}
+.slot.focus .cap{color:var(--txt);font-weight:600;transform:scale(1.08);background:rgba(138,180,255,.22)}
+:root[data-theme="light"] .slot.focus .cap{background:rgba(47,107,255,.16)}
+
+/* Rodapé (legenda e versão removidos a pedido) */
+#hint{position:absolute;left:72px;right:72px;bottom:46px;display:none;gap:26px;color:var(--faint);font-size:16px}
+#hint b{color:var(--sub);font-weight:700}
+#mode{margin-left:auto;letter-spacing:.4px}
+
+/* Overlay todos os apps */
+/* fundo opaco (blur de fundo foi removido: pesado demais p/ a GPU da TV) */
+.overlay{position:absolute;top:0;right:0;bottom:0;left:0;background:#0a0d12;
+  padding:56px 72px;overflow:hidden}
+:root[data-theme="light"] .overlay{background:#eef1f6}
+.overlay.hidden,#saver.hidden,.hidden{display:none}
+.ov-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.ov-head h2{font-size:30px;font-weight:600}
+.ov-head h2 span{color:var(--faint);font-weight:500}
+.ov-hint{color:var(--faint);font-size:16px}.ov-hint b{color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:20px;align-content:start;
+  width:100%;box-sizing:border-box;height:calc(1080px - 200px);overflow:hidden}
+.cell{height:150px;border-radius:16px;position:relative;background:var(--glass);
+  border:1px solid var(--glass-brd);overflow:hidden}
+.cell .logo{position:absolute;top:0;right:0;bottom:28px;left:0;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800}
+.cell .logo-img{width:62px;height:62px;object-fit:contain}
+.cell .hero{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+.cell .cap{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;font-size:13px;text-align:center;
+  color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
+.cell.focus .cap{color:#fff}
+/* modo diagnóstico: mostra o ID real do app (quebra linha, sem cortar) */
+.cell .cap.capid{white-space:normal;line-height:1.2;padding:5px 6px;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.4))}
+.cell .cap.capid .idtxt{display:block;font-size:11px;color:var(--accent);word-break:break-all;margin-top:2px}
+.cell.focus .cap.capid .idtxt{color:#0b0f15}
+.cell.cand{box-shadow:0 0 0 2px var(--accent)}
+.cell .cap.capid .ocul{color:#ffb86b;font-size:10px}
+.cell.focus{box-shadow:0 0 0 3px var(--accent);transform:scale(1.05);z-index:2;background:var(--focus)}
+.cell.focus .logo,.cell.focus .cap{color:#0b0f15}
+
+/* Menu de configurações */
+.set-list{max-width:920px;margin:16px auto 0;display:flex;flex-direction:column;gap:8px}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;
+  border-radius:16px;border:1px solid transparent;font-size:25px}
+.set-row .lbl{color:var(--txt);font-weight:500}
+.set-row .val{color:var(--sub);display:flex;align-items:center;gap:16px;font-size:23px;min-width:220px;justify-content:flex-end}
+.set-row .val .arw{opacity:.45;font-size:26px}
+.set-row.focus{background:rgba(255,255,255,.1);border-color:var(--glass-brd)}
+:root[data-theme="light"] .set-row.focus{background:rgba(20,25,33,.08)}
+.set-row.focus .val{color:var(--txt)}
+.set-row.focus .val .arw{opacity:.9}
+.set-row.action .val{color:var(--accent)}
+
+/* Seletor visual de papel de parede (miniaturas sobre a imagem em tela cheia) */
+.wp{position:absolute;top:0;right:0;bottom:0;left:0;z-index:40}
+.wp.hidden{display:none}
+.wp-scrim{position:absolute;left:0;right:0;bottom:0;height:380px;
+  background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.25) 55%,transparent)}
+.wp-hint{position:absolute;bottom:230px;left:72px;color:#fff;font-size:21px;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+.wp-hint b{font-weight:700}
+.wp-strip{position:absolute;left:0;right:0;bottom:48px;display:flex;gap:18px;padding:0 72px;
+  align-items:flex-end;transition:transform .2s cubic-bezier(.22,.61,.36,1)}
+.wp-thumb-item{flex:0 0 auto;width:232px;height:130px;border-radius:12px;object-fit:cover;display:block;
+  border:3px solid rgba(255,255,255,.25);
+  box-shadow:0 12px 32px rgba(0,0,0,.6);transition:transform .14s ease,border-color .14s ease}
+.wp-thumb-item.focus{border-color:#fff;transform:translateY(-14px) scale(1.08);
+  box-shadow:0 20px 44px rgba(0,0,0,.7)}
+/* miniatura dentro da linha do menu */
+.set-row .wp-thumb{display:inline-block;width:86px;height:48px;border-radius:7px;object-fit:cover;
+  border:1px solid var(--glass-brd);vertical-align:middle}
+
+/* Busca de cidade (clima) */
+.city-box{max-width:980px;margin:28px auto 0}
+#city-input{width:100%;box-sizing:border-box;font-size:32px;padding:20px 24px;border-radius:14px;
+  background:rgba(255,255,255,.08);border:2px solid var(--glass-brd);color:var(--txt);outline:none;
+  font-family:inherit}
+#city-input:focus{border-color:var(--accent);background:rgba(255,255,255,.14)}
+#city-input::placeholder{color:var(--faint)}
+:root[data-theme="light"] #city-input{background:rgba(20,25,33,.05)}
+.city-status{margin:18px 4px;color:var(--sub);font-size:21px;min-height:26px}
+.city-results{display:flex;flex-direction:column;gap:10px}
+.city-row{padding:18px 24px;border-radius:12px;border:1px solid transparent;font-size:25px;color:var(--txt)}
+.city-row .sub{color:var(--sub);font-size:19px;margin-left:12px}
+.city-row.focus{background:rgba(255,255,255,.1);border-color:var(--accent)}
+:root[data-theme="light"] .city-row.focus{background:rgba(20,25,33,.08)}
+
+/* Protetor de tela */
+#saver{position:absolute;top:0;right:0;bottom:0;left:0;background:#000;overflow:hidden;z-index:50;color:#fff}
+.saver-bg{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;will-change:opacity,transform}
+.saver-bg.show{opacity:1}
+.saver-bg.kb{animation:kenburns 20s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.saver-dim{position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(130% 90% at 50% 40%,rgba(0,0,0,.15),rgba(0,0,0,.55))}
+.saver-clock{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#s-time{font-size:150px;font-weight:700;letter-spacing:-3px;text-shadow:0 4px 40px rgba(0,0,0,.8)}
+#s-date{font-size:30px;color:rgba(255,255,255,.9);margin-top:6px;text-transform:capitalize;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+
+/* Toast */
+#toast{position:absolute;left:50%;bottom:220px;transform:translateX(-50%) translateY(16px);
+  background:rgba(16,20,28,.94);border:1px solid var(--glass-brd);
+  color:#f4f7fb;padding:14px 26px;border-radius:14px;font-size:21px;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}

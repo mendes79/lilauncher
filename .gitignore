@@ -1,0 +1,28 @@
+# Artefatos de build (regenerados a cada instalacao)
+build/
+**/.buildResult/
+*.wgt
+
+# App de diagnostico (nao faz parte do launcher)
+test-min/
+
+# Logs
+diagnostico/
+*.log
+
+# Segredos e certificados (nunca versionar)
+*.p12
+*.p12.pwd
+*.pem
+*.key
+*.pwd
+tizen-env.sh
+tizen-env.*.sh
+*secret*
+
+# Imagem pessoal (nao publicar)
+src/img/wallpapers/nos_01.jpg
+
+# Sistema operacional
+Thumbs.db
+.DS_Store
