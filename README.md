@@ -1,5 +1,7 @@
 # lilauncher
 
+![Tela inicial do lilauncher](docs/lilauncher.jpg)
+
 Um launcher minimalista e original para Smart TVs Samsung com Tizen, empacotado como um aplicativo web instalado por sideload. Foi construído e testado em uma Samsung UN65BU8000 (Tizen 6.5, 2022) e deve funcionar na família BU e AU 8000 e em modelos Tizen 6.x próximos.
 
 A proposta é uma tela inicial limpa: uma única fileira com as capas dos seus aplicativos, relógio, clima com busca de cidade, protetor de tela com rotação de fotos, tema claro, escuro e automático, uma visão de todos os aplicativos instalados e um atalho para as configurações da TV.
