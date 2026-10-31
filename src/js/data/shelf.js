@@ -20,6 +20,7 @@ window.SHELF = [
   { id: 'rJeHak5zRg.Spotify',          name: 'Spotify',         hero: 'img/logos/spotify.jpg' },
   { id: 'xvvl3S1bvH.TizenBrewStandalone', name: 'TizenBrew',    hero: 'img/logos/tizenbrew.jpg' },
   { id: 'gbemutzn01.GBEmu',            name: 'Gameboy',         hero: 'img/logos/gameboy.jpg' },
+  { id: 'lilvideoke.Videoke',          name: 'Videokê',         hero: 'img/logos/videoke.jpg' },
   { id: 'org.tizen.browser',           name: 'Navegador',       hero: 'img/logos/navegador.jpg' }
   // Para um atalho de web, acrescente uma virgula na linha acima e inclua, por exemplo:
   // { url: 'https://www.youtube.com', name: 'YouTube Web', hero: 'img/logos/youtubeweb.jpg' }
