@@ -48,6 +48,25 @@ O ícone do aplicativo é src/icon.png, um PNG quadrado de 512 por 512.
 
 Os papéis de parede e o ícone do aplicativo são fotos pessoais do autor, incluídas apenas como exemplo. Uma das imagens, src/img/wallpapers/nos_01.jpg, foi deixada de fora do repositório de propósito, por ser pessoal. Se você clonar o projeto, troque essas imagens pelas suas; é só colocar as suas fotos na pasta de wallpapers e rodar o scan-walls.mjs, e substituir o icon.png.
 
+## Aplicativo Integrado: Videokê TV (`lilvideoke.Videoke`)
+
+O **lilauncher** inclui em sua fileira principal o atalho para o **Videokê TV**, uma estação de karaokê/videokê desenvolvida especificamente para a Smart TV Samsung Tizen 6.5 com controle de fila em tempo real pelo celular via QR Code:
+
+- **Repositório dedicado do Videokê TV**: [https://github.com/mendes79/videoke-tv](https://github.com/mendes79/videoke-tv)
+- **Web App Mobile (Controle de Fila)**: [https://videoke-tv.web.app](https://videoke-tv.web.app)
+
+![Capa do Videokê TV no lilauncher](docs/videoke-tv.jpg)
+
+### Destaques do Videokê TV
+- **Pareamento instantâneo por QR Code**: Convidados escaneiam o QR Code na tela da TV (ou o Mini QR Code exibido no canto inferior esquerdo durante as músicas) sem precisar instalar nada no celular.
+- **Busca por texto e comando de voz (YouTube Data API v3)**: Interface mobile de alta visibilidade (conforto visual 40+) com busca rápida por voz, limite de 2 músicas ativas por participante, visualização da fila em tempo real e opção de cancelar músicas pendentes.
+- **Transição automática de 15 segundos em 2 colunas**: Mostra à esquerda o próximo cantor e a contagem regressiva, e à direita a lista numerada das próximas músicas da fila sobre 13 papéis de parede em Full HD sorteados aleatoriamente.
+- **Controles completos na TV**: Barra de rodapé com botão dinâmico `Play`/`Pausa` (timeout automático de 60 segundos em pausa com aviso sonoro nos 10s finais), `Parar`, `Anterior`, `Próxima`, `Reset Fila` e `Sair`.
+
+| Tela de Contagem e Fila na TV (1080p) | App Mobile de Seleção e Fila (Alta Visibilidade) |
+| :---: | :---: |
+| ![Tela de contagem regressiva e fila na TV](docs/videoke-countdown.jpg) | ![Tela do Web App Mobile do Videokê TV](docs/videoke-mobile.jpg) |
+
 ## Licença
 
 MIT. Veja o arquivo LICENSE. Use, modifique e compartilhe à vontade.
