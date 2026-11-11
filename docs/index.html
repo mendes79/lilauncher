@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lilauncher — Launcher minimalista para Smart TV Samsung Tizen</title>
+  <meta name="description" content="Launcher web minimalista e de código aberto para Smart TVs Samsung com Tizen 6.5, instalado por sideload. Relógio, clima, protetor de tela e seus apps favoritos.">
+  <meta name="author" content="mendes79">
+  <link rel="canonical" href="https://mendes79.github.io/lilauncher/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="lilauncher — Launcher minimalista para Smart TV Samsung Tizen">
+  <meta property="og:description" content="Launcher web de código aberto para Smart TVs Samsung Tizen 6.5, instalado por sideload. Tela inicial limpa com relógio, clima, protetor de tela e seus apps.">
+  <meta property="og:url" content="https://mendes79.github.io/lilauncher/">
+  <meta property="og:image" content="https://mendes79.github.io/lilauncher/lilauncher.jpg">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="lilauncher — Launcher minimalista para Smart TV Samsung Tizen">
+  <meta name="twitter:description" content="Launcher web de código aberto para Smart TVs Samsung Tizen 6.5, instalado por sideload.">
+  <meta name="twitter:image" content="https://mendes79.github.io/lilauncher/lilauncher.jpg">
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #9198a1;
+      --accent: #58a6ff;
+      --max: 920px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header {
+      text-align: center;
+      padding: 72px 20px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 { font-size: 2.6rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    header .tagline { font-size: 1.2rem; color: var(--muted); margin: 0 auto 28px; max-width: 620px; }
+    .badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .badge {
+      font-size: 0.8rem; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 4px 12px; background: var(--surface);
+    }
+    .cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block; padding: 10px 22px; border-radius: 8px;
+      font-weight: 600; border: 1px solid var(--border);
+    }
+    .btn-primary { background: var(--accent); color: #0d1117; border-color: var(--accent); }
+    .btn-primary:hover { text-decoration: none; opacity: 0.9; }
+    .btn-ghost { background: var(--surface); color: var(--text); }
+    .btn-ghost:hover { text-decoration: none; border-color: var(--muted); }
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section h2 { font-size: 1.6rem; margin: 0 0 20px; }
+    .hero img, .shot img {
+      width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block;
+    }
+    .hero { padding-top: 40px; }
+    .features { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .features li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .features strong { display: block; margin-bottom: 4px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .shot figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; text-align: center; }
+    .note { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 16px 20px; color: var(--muted); }
+    ol.steps { padding-left: 20px; }
+    ol.steps li { margin-bottom: 8px; }
+    footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; }
+    code { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>lilauncher</h1>
+      <p class="tagline">Um launcher minimalista e original para Smart TVs Samsung com Tizen, instalado por sideload.</p>
+      <div class="badges">
+        <span class="badge">Tizen 6.5</span>
+        <span class="badge">Samsung Smart TV</span>
+        <span class="badge">Sideload</span>
+        <span class="badge">Licença MIT</span>
+        <span class="badge">Open Source</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/mendes79/lilauncher">Ver no GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/mendes79/lilauncher#readme">Documentação</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <img src="lilauncher.jpg" alt="Tela inicial do lilauncher em uma Smart TV Samsung Tizen">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>O que é</h2>
+      <p>O lilauncher é uma tela inicial limpa para a sua TV: uma única fileira com as capas dos seus aplicativos, relógio, clima com busca de cidade, protetor de tela com rotação de fotos, temas claro, escuro e automático, uma visão de todos os aplicativos instalados e um atalho para as configurações da TV.</p>
+      <p>Foi construído e testado em uma Samsung UN65BU8000 (Tizen 6.5, 2022) e deve funcionar na família BU e AU 8000 e em modelos Tizen 6.x próximos. É um trabalho pessoal, sem qualquer vínculo com a Samsung, compartilhado para quem quiser usar na própria TV ou se basear para criar o seu.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Recursos</h2>
+      <ul class="features">
+        <li><strong>Fileira de aplicativos</strong>Os apps que você escolher, na ordem que definir, com capas em paisagem.</li>
+        <li><strong>Relógio e clima</strong>Hora, data e o clima da sua cidade via Open-Meteo, sem necessidade de chave de API.</li>
+        <li><strong>Protetor de tela</strong>Entra após um tempo ocioso, com rotação suave entre papéis de parede e relógio sobreposto.</li>
+        <li><strong>Temas</strong>Claro, escuro e automático, ajustáveis nas configurações do launcher.</li>
+        <li><strong>Todos os aplicativos</strong>Uma visão de todos os apps instalados na TV.</li>
+        <li><strong>Atalho de sistema</strong>Acesso direto às configurações nativas da TV.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Requisitos e instalação</h2>
+      <p>A instalação é por sideload, usando as ferramentas oficiais da Samsung:</p>
+      <ol class="steps">
+        <li>Tizen Studio com a linha de comando (Tizen CLI) instalada.</li>
+        <li>Um certificado Samsung (autor e distribuidor) vinculado ao DUID da sua TV — gratuito.</li>
+        <li>Modo de desenvolvedor ativo na TV e um PC na mesma rede.</li>
+        <li>Rodar os scripts prontos para montar o pacote, assinar e instalar via <code>sdb</code>.</li>
+      </ol>
+      <p>O passo a passo completo, scripts e personalização estão no <a href="https://github.com/mendes79/lilauncher#readme">README do repositório</a>.</p>
+      <p class="note">Limitação honesta: a tecla Home física da TV não pode ser remapeada para este launcher sem root nesta geração de firmware. Para aproximar o efeito de abrir no boot, use o recurso nativo "Executar automaticamente o último aplicativo".</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Aplicativo integrado: Videokê TV</h2>
+      <p>O lilauncher inclui na fileira principal o atalho para o <strong>Videokê TV</strong>, uma estação de karaokê desenvolvida para a mesma Smart TV Samsung Tizen 6.5, com controle de fila em tempo real pelo celular via QR Code.</p>
+      <div class="gallery">
+        <figure class="shot"><img src="videoke-tv.jpg" alt="Tela do Videokê TV na televisão"><figcaption>Videokê TV na televisão</figcaption></figure>
+        <figure class="shot"><img src="videoke-countdown.jpg" alt="Tela de contagem e fila do Videokê TV"><figcaption>Contagem e fila na TV</figcaption></figure>
+        <figure class="shot"><img src="videoke-mobile.jpg" alt="App mobile de seleção e fila do Videokê TV"><figcaption>Controle de fila no celular</figcaption></figure>
+      </div>
+      <p style="margin-top:20px;">
+        Repositório: <a href="https://github.com/mendes79/videoke-tv">github.com/mendes79/videoke-tv</a> ·
+        App mobile: <a href="https://videoke-tv.web.app">videoke-tv.web.app</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>lilauncher — projeto de código aberto sob licença MIT, por <a href="https://github.com/mendes79">mendes79</a>.</p>
+      <p>Sem qualquer vínculo com a Samsung. Tizen e Samsung são marcas de seus respectivos donos.</p>
+    </div>
+  </footer>
+</body>
+</html>
