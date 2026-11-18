@@ -67,6 +67,18 @@ O **lilauncher** inclui em sua fileira principal o atalho para o **Videokê TV**
 | :---: | :---: |
 | ![Tela de contagem regressiva e fila na TV](docs/videoke-countdown.jpg) | ![Tela do Web App Mobile do Videokê TV](docs/videoke-mobile.jpg) |
 
+## Aplicativo Integrado: Atari 2600 Tizen Emulator (`lilatari01.Atari2600`)
+
+O **lilauncher** inclui o atalho para o **Atari 2600 Tizen Emulator**, um emulador de Atari 2600 para a Smart TV Samsung Tizen que roda o núcleo Stella 2014 recompilado para WebAssembly, em velocidade cheia no Chromium M85 da TV.
+
+- **Repositório dedicado do Atari 2600 Tizen Emulator**: [https://github.com/mendes79/Atari-2600-Tizen-Emulator](https://github.com/mendes79/Atari-2600-Tizen-Emulator)
+
+### Destaques do Atari 2600 Tizen Emulator
+- **Tela de seleção sobre wallpaper temático**, com navegação vertical e menu de Configurações (som e velocidade).
+- **Configuração de joystick interativa**: um assistente mapeia cada comando sobre a foto real do controle, acendendo o botão pressionado, incluindo as chaves Game Select e Game Reset no painel do console.
+- **Controles flexíveis**: funciona com gamepad 8BitDo e também com o controle remoto da TV (o conjunto do Atari é simples); Select+Start volta à tela de seleção.
+- **ROM livre inclusa (Firefly, domínio público)** para teste imediato de tela, controle e som; as ROMs comerciais ficam locais e não são publicadas.
+
 ## Licença
 
 MIT. Veja o arquivo LICENSE. Use, modifique e compartilhe à vontade.
