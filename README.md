@@ -85,3 +85,11 @@ Estação de karaokê/videokê para a Smart TV Samsung Tizen 6.5 com controle de
 ## Licença
 
 MIT. Veja o arquivo LICENSE. Use, modifique e compartilhe à vontade.
+
+
+## Projetos relacionados
+
+Apps do mesmo ecossistema para Smart TV Samsung Tizen:
+
+- **[Videokê TV](https://github.com/mendes79/videoke-tv)** — estação de karaokê com fila em tempo real pelo celular via QR Code, integrada à fileira do lilauncher. App: https://videoke-tv.web.app
+- **[SNES Tizen Emulator](https://github.com/mendes79/SNES-Tizen-Emulator)** — emulador de Super Nintendo que roda direto na TV via WebAssembly, lançado a partir do lilauncher.
