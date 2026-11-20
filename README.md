@@ -1,12 +1,24 @@
-# lilauncher
+# 📺 lilauncher — Tela inicial minimalista para Smart TV Samsung (Tizen)
 
 ![Tela inicial do lilauncher](docs/lilauncher.jpg)
 
-Um launcher minimalista e original para Smart TVs Samsung com Tizen, empacotado como um aplicativo web instalado por sideload. Foi construído e testado em uma Samsung UN65BU8000 (Tizen 6.5, 2022) e deve funcionar na família BU e AU 8000 e em modelos Tizen 6.x próximos.
+![license](https://img.shields.io/badge/license-MIT-green)
+![platform](https://img.shields.io/badge/platform-Samsung%20Tizen%206.5-1428A0)
+![install](https://img.shields.io/badge/install-sideload%20(.wgt)-555)
+![stars](https://img.shields.io/github/stars/mendes79/lilauncher?style=social)
+
+> **EN:** A clean, minimalist custom home screen (launcher) for Samsung Smart TVs running Tizen, sideloaded as a `.wgt` web app. One row of app covers, clock, weather, photo screensaver, light/dark themes.
+
+Um launcher minimalista e original para Smart TVs Samsung com Tizen, empacotado como um aplicativo web instalado por **sideload**. Foi construído e testado em uma **Samsung UN65BU8000 (Tizen 6.5, 2022)** e deve funcionar na família BU e AU 8000 e em modelos Tizen 6.x próximos.
 
 A proposta é uma tela inicial limpa: uma única fileira com as capas dos seus aplicativos, relógio, clima com busca de cidade, protetor de tela com rotação de fotos, tema claro, escuro e automático, uma visão de todos os aplicativos instalados e um atalho para as configurações da TV.
 
 > Este projeto não tem qualquer vínculo com a Samsung. É um trabalho pessoal, compartilhado para quem quiser usar na própria TV ou se basear para criar o seu.
+
+## ▶️ Demonstração
+
+<!-- TODO: cole aqui o link do vídeo de demonstração no YouTube. Ex.: [Ver demo](https://youtu.be/SEU_VIDEO) -->
+_Vídeo de demonstração em breve._
 
 ## O que ele faz
 
@@ -48,36 +60,27 @@ O ícone do aplicativo é src/icon.png, um PNG quadrado de 512 por 512.
 
 Os papéis de parede e o ícone do aplicativo são fotos pessoais do autor, incluídas apenas como exemplo. Uma das imagens, src/img/wallpapers/nos_01.jpg, foi deixada de fora do repositório de propósito, por ser pessoal. Se você clonar o projeto, troque essas imagens pelas suas; é só colocar as suas fotos na pasta de wallpapers e rodar o scan-walls.mjs, e substituir o icon.png.
 
-## Aplicativo Integrado: Videokê TV (`lilvideoke.Videoke`)
+## Ecossistema (apps que rodam no lilauncher)
 
-O **lilauncher** inclui em sua fileira principal o atalho para o **Videokê TV**, uma estação de karaokê/videokê desenvolvida especificamente para a Smart TV Samsung Tizen 6.5 com controle de fila em tempo real pelo celular via QR Code:
+O lilauncher é a casa de alguns aplicativos dedicados para a mesma TV:
 
-- **Repositório dedicado do Videokê TV**: [https://github.com/mendes79/videoke-tv](https://github.com/mendes79/videoke-tv)
-- **Web App Mobile (Controle de Fila)**: [https://videoke-tv.web.app](https://videoke-tv.web.app)
+- 🎮 **[SNES Tizen Emulator](https://github.com/mendes79/SNES-Tizen-Emulator)** — emulador de Super Nintendo (núcleo snes9x2002 em WebAssembly).
+- 🕹️ **[Atari 2600 Tizen Emulator](https://github.com/mendes79/Atari-2600-Tizen-Emulator)** — emulador de Atari 2600 (núcleo Stella 2014 em WebAssembly).
+- 🎤 **[Videokê TV](https://github.com/mendes79/videoke-tv)** — estação de karaokê com fila em tempo real pelo celular via QR Code.
 
-![Capa do Videokê TV no lilauncher](docs/videoke-tv.jpg)
+### Videokê TV (`lilvideoke.Videoke`)
 
-### Destaques do Videokê TV
-- **Pareamento instantâneo por QR Code**: Convidados escaneiam o QR Code na tela da TV (ou o Mini QR Code exibido no canto inferior esquerdo durante as músicas) sem precisar instalar nada no celular.
-- **Busca por texto e comando de voz (YouTube Data API v3)**: Interface mobile de alta visibilidade (conforto visual 40+) com busca rápida por voz, limite de 2 músicas ativas por participante, visualização da fila em tempo real e opção de cancelar músicas pendentes.
-- **Transição automática de 15 segundos em 2 colunas**: Mostra à esquerda o próximo cantor e a contagem regressiva, e à direita a lista numerada das próximas músicas da fila sobre 13 papéis de parede em Full HD sorteados aleatoriamente.
-- **Controles completos na TV**: Barra de rodapé com botão dinâmico `Play`/`Pausa` (timeout automático de 60 segundos em pausa com aviso sonoro nos 10s finais), `Parar`, `Anterior`, `Próxima`, `Reset Fila` e `Sair`.
+Estação de karaokê/videokê para a Smart TV Samsung Tizen 6.5 com controle de fila em tempo real pelo celular via QR Code.
 
-| Tela de Contagem e Fila na TV (1080p) | App Mobile de Seleção e Fila (Alta Visibilidade) |
+- Pareamento instantâneo por QR Code, sem instalar nada no celular.
+- Busca por texto e voz (YouTube Data API v3), com limite de 2 músicas ativas por participante.
+- Transição automática mostrando próximo cantor e fila sobre papéis de parede em Full HD.
+- Controles completos na TV (Play/Pausa, Parar, Anterior, Próxima, Reset Fila, Sair).
+- Web App Mobile: [https://videoke-tv.web.app](https://videoke-tv.web.app)
+
+| Contagem e fila na TV (1080p) | App Mobile (alta visibilidade) |
 | :---: | :---: |
 | ![Tela de contagem regressiva e fila na TV](docs/videoke-countdown.jpg) | ![Tela do Web App Mobile do Videokê TV](docs/videoke-mobile.jpg) |
-
-## Aplicativo Integrado: Atari 2600 Tizen Emulator (`lilatari01.Atari2600`)
-
-O **lilauncher** inclui o atalho para o **Atari 2600 Tizen Emulator**, um emulador de Atari 2600 para a Smart TV Samsung Tizen que roda o núcleo Stella 2014 recompilado para WebAssembly, em velocidade cheia no Chromium M85 da TV.
-
-- **Repositório dedicado do Atari 2600 Tizen Emulator**: [https://github.com/mendes79/Atari-2600-Tizen-Emulator](https://github.com/mendes79/Atari-2600-Tizen-Emulator)
-
-### Destaques do Atari 2600 Tizen Emulator
-- **Tela de seleção sobre wallpaper temático**, com navegação vertical e menu de Configurações (som e velocidade).
-- **Configuração de joystick interativa**: um assistente mapeia cada comando sobre a foto real do controle, acendendo o botão pressionado, incluindo as chaves Game Select e Game Reset no painel do console.
-- **Controles flexíveis**: funciona com gamepad 8BitDo e também com o controle remoto da TV (o conjunto do Atari é simples); Select+Start volta à tela de seleção.
-- **ROM livre inclusa (Firefly, domínio público)** para teste imediato de tela, controle e som; as ROMs comerciais ficam locais e não são publicadas.
 
 ## Licença
 
