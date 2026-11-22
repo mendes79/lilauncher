@@ -22,6 +22,7 @@ window.SHELF = [
   { id: 'lilatari01.Atari2600',        name: 'Atari',           hero: 'img/logos/atari.jpg' },
   { id: 'gbemutzn01.GBEmu',            name: 'Gameboy',         hero: 'img/logos/gameboy.jpg' },
   { id: 'lilnes0001.NES',              name: 'NES',             hero: 'img/logos/nes.jpg' },
+  { id: 'lilsnes001.Snes9xLab',       name: 'SNES',            hero: 'img/logos/snes.jpg' },
   { id: 'lilvideoke.Videoke',          name: 'Videokê',         hero: 'img/logos/videoke.jpg' },
   { id: 'org.tizen.browser',           name: 'Navegador',       hero: 'img/logos/navegador.jpg' }
   // Para um atalho de web, acrescente uma virgula na linha acima e inclua, por exemplo:
