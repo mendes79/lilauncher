@@ -64,8 +64,9 @@ Os papéis de parede e o ícone do aplicativo são fotos pessoais do autor, incl
 
 O lilauncher é a casa de alguns aplicativos dedicados para a mesma TV:
 
-- 🎮 **[SNES Tizen Emulator](https://github.com/mendes79/SNES-Tizen-Emulator)** — emulador de Super Nintendo (núcleo snes9x2002 em WebAssembly).
+- 🎮 **[SNES Tizen Emulator](https://github.com/mendes79/SNES-Tizen-Emulator)** — emulador de Super Nintendo (núcleo snes9x2005 em WebAssembly).
 - 🕹️ **[Atari 2600 Tizen Emulator](https://github.com/mendes79/Atari-2600-Tizen-Emulator)** — emulador de Atari 2600 (núcleo Stella 2014 em WebAssembly).
+- 🎮 **[NES Tizen Emulator](https://github.com/mendes79/NES-Tizen-Emulator)** — emulador de NES (núcleo FCEUmm em WebAssembly).
 - 🎤 **[Videokê TV](https://github.com/mendes79/videoke-tv)** — estação de karaokê com fila em tempo real pelo celular via QR Code.
 
 ### Videokê TV (`lilvideoke.Videoke`)
