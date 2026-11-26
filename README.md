@@ -17,8 +17,9 @@ A proposta é uma tela inicial limpa: uma única fileira com as capas dos seus a
 
 ## ▶️ Demonstração
 
-<!-- TODO: cole aqui o link do vídeo de demonstração no YouTube. Ex.: [Ver demo](https://youtu.be/SEU_VIDEO) -->
-_Vídeo de demonstração em breve._
+[![Demonstração do lilauncher na Smart TV Samsung](https://img.youtube.com/vi/23bKED1wh0Q/hqdefault.jpg)](https://www.youtube.com/watch?v=23bKED1wh0Q)
+
+Passeio ao vivo pela tela inicial do lilauncher, terminando ao abrir o emulador de SNES.
 
 ## O que ele faz
 
